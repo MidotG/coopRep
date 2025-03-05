@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://ckjn0mscmrmuo"]
+[gd_scene load_steps=20 format=3 uid="uid://ckjn0mscmrmuo"]
 
 [ext_resource type="ArrayMesh" uid="uid://dd4lco6ipxv2p" path="res://Assets/objects/Grass_Wispy_Short.obj" id="2_jxhx7"]
 [ext_resource type="Texture2D" uid="uid://imnui54gb62w" path="res://Assets/objects_imgs/Bark_DeadTree.png" id="3_fwlr7"]
 [ext_resource type="ArrayMesh" uid="uid://dpqkcutur1pch" path="res://Assets/objects/DeadTree_1.obj" id="4_drnn1"]
 [ext_resource type="Texture2D" uid="uid://dqsefmew0kd4h" path="res://Assets/objects_imgs/Flowers.png" id="5_14r1r"]
+[ext_resource type="PackedScene" uid="uid://ci52bv1m15cbs" path="res://cars/Doge.tscn" id="6_f0dsc"]
 [ext_resource type="ArrayMesh" uid="uid://mdfsv8iq125q" path="res://Assets/objects/TwistedTree_2.obj" id="6_hg33l"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_ahv4t"]
@@ -24,6 +25,9 @@ albedo_color = Color(0.370158, 0.56417, 0.133241, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6dwwb"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_r3kt3"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vqy1b"]
 albedo_color = Color(0.327362, 0.530412, 0.204348, 1)
@@ -69,6 +73,11 @@ mesh = SubResource("PlaneMesh_ljflk")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_6dwwb")
 
+[node name="StaticBody3D2" type="StaticBody3D" parent="floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D2"]
+shape = SubResource("ConcavePolygonShape3D_r3kt3")
+
 [node name="grass1" type="MultiMeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0107975, 0.0724993, 0.0130501)
 material_override = SubResource("StandardMaterial3D_vqy1b")
@@ -88,3 +97,14 @@ visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_86ys1")
+
+[node name="car" parent="." instance=ExtResource("6_f0dsc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2, 0)
+
+[node name="CameraPivot" type="Marker3D" parent="car"]
+transform = Transform3D(-4.37114e-08, -0.486335, 0.873772, 0, 0.873772, 0.486335, -1, 2.12584e-08, -3.81938e-08, 3.95, 3.02, -1.85)
+
+[node name="Camera3D" type="Camera3D" parent="car/CameraPivot"]
+transform = Transform3D(1, -1.06096e-08, -4.20065e-09, 9.16092e-09, 0.965926, -0.258819, 6.8035e-09, 0.258819, 0.965926, -8.34465e-07, -1.36011, 0.387437)
+fov = 63.2993
+size = 1.901
