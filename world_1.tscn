@@ -1,7 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://b3wm08pcqtlat"]
+[gd_scene load_steps=18 format=3 uid="uid://ckjn0mscmrmuo"]
 
 [ext_resource type="ArrayMesh" uid="uid://dd4lco6ipxv2p" path="res://Assets/objects/Grass_Wispy_Short.obj" id="2_jxhx7"]
-[ext_resource type="PackedScene" uid="uid://d0toexy18y0em" path="res://watcher.tscn" id="2_kamln"]
 [ext_resource type="Texture2D" uid="uid://imnui54gb62w" path="res://Assets/objects_imgs/Bark_DeadTree.png" id="3_fwlr7"]
 [ext_resource type="ArrayMesh" uid="uid://dpqkcutur1pch" path="res://Assets/objects/DeadTree_1.obj" id="4_drnn1"]
 [ext_resource type="Texture2D" uid="uid://dqsefmew0kd4h" path="res://Assets/objects_imgs/Flowers.png" id="5_14r1r"]
@@ -89,6 +88,3 @@ visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_86ys1")
-
-[node name="watcher" parent="." instance=ExtResource("2_kamln")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
