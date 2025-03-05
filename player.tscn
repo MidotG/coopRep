@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjxhgsy1cvn7v"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_otaj8"]
+[ext_resource type="PackedScene" uid="uid://bty2rpvw2dh0h" path="res://cars/Models/Doge/doge-body.glb" id="2_2l440"]
+[ext_resource type="PackedScene" uid="uid://benmjny2guowm" path="res://cars/Models/Doge/Wheel.glb" id="3_5mi6t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r88yf"]
+size = Vector3(3, 2, 5)
+
+[node name="player" type="VehicleBody3D"]
+script = ExtResource("1_otaj8")
+
+[node name="pivot" type="Node3D" parent="."]
+
+[node name="Character" parent="pivot" instance=ExtResource("2_2l440")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.94, 0, 0, 0, 0.94, 0, 0, 0, 0.94, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_r88yf")
+
+[node name="front_left_wheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 0.305, 1.555)
+use_as_steering = true
+damping_compression = 1.9
+damping_relaxation = 2.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="front_left_wheel"]
+
+[node name="Wheel" parent="front_left_wheel/MeshInstance3D" instance=ExtResource("3_5mi6t")]
+
+[node name="front_right_wheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05, 0.305, 1.555)
+use_as_steering = true
+damping_compression = 1.9
+damping_relaxation = 2.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="front_right_wheel"]
+
+[node name="Wheel" parent="front_right_wheel/MeshInstance3D" instance=ExtResource("3_5mi6t")]
+
+[node name="back_right_wheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05, 0.305, -1.32)
+use_as_traction = true
+damping_compression = 1.9
+damping_relaxation = 2.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="back_right_wheel"]
+
+[node name="Wheel" parent="back_right_wheel/MeshInstance3D" instance=ExtResource("3_5mi6t")]
+
+[node name="back_left_wheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 0.305, -1.32)
+use_as_traction = true
+damping_compression = 1.9
+damping_relaxation = 2.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="back_left_wheel"]
+
+[node name="Wheel" parent="back_left_wheel/MeshInstance3D" instance=ExtResource("3_5mi6t")]
