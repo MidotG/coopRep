@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3wm08pcqtlat"]
+[gd_scene load_steps=7 format=3 uid="uid://b3wm08pcqtlat"]
 
 [ext_resource type="ArrayMesh" uid="uid://cjcg557exwao8" path="res://Assets/TwistedTree_5.obj" id="1_me0ga"]
+[ext_resource type="PackedScene" uid="uid://d0toexy18y0em" path="res://watcher.tscn" id="2_kamln"]
 
 [sub_resource type="Sky" id="Sky_6o4ex"]
 
@@ -34,3 +35,6 @@ shape = SubResource("ConcavePolygonShape3D_6dwwb")
 [node name="TwistedTree5" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, 9)
 mesh = ExtResource("1_me0ga")
+
+[node name="watcher" parent="." instance=ExtResource("2_kamln")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
