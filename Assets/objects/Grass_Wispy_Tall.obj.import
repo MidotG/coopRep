@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dbl2vo73bjtg4"
+path="res://.godot/imported/Grass_Wispy_Tall.obj-2c2140b3bd0a97158d51860f86183cbe.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Grass_Wispy_Tall.obj-2c2140b3bd0a97158d51860f86183cbe.mesh"]
+
+source_file="res://Assets/objects/Grass_Wispy_Tall.obj"
+dest_files=["res://.godot/imported/Grass_Wispy_Tall.obj-2c2140b3bd0a97158d51860f86183cbe.mesh", "res://.godot/imported/Grass_Wispy_Tall.obj-2c2140b3bd0a97158d51860f86183cbe.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

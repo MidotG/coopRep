@@ -23,6 +23,16 @@ project/assembly_name="Coop#1"
 
 import/fbx/enabled=false
 
+[importer_defaults]
+
+wavefront_obj={
+"force_disable_mesh_compression": false,
+"generate_tangents": true,
+"offset_mesh": Vector3(0, 0, 0),
+"optimize_mesh": true,
+"scale_mesh": Vector3(1, 1, 1)
+}
+
 [input]
 
 ui_left={

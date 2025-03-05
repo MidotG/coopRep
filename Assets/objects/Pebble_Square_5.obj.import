@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cslpuugray2x6"
+path="res://.godot/imported/Pebble_Square_5.obj-70e91407aea8c61608bcaa158d3302a2.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Pebble_Square_5.obj-70e91407aea8c61608bcaa158d3302a2.mesh"]
+
+source_file="res://Assets/objects/Pebble_Square_5.obj"
+dest_files=["res://.godot/imported/Pebble_Square_5.obj-70e91407aea8c61608bcaa158d3302a2.mesh", "res://.godot/imported/Pebble_Square_5.obj-70e91407aea8c61608bcaa158d3302a2.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
