@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjxhgsy1cvn7v"]
+[gd_scene load_steps=5 format=3 uid="uid://dgtfuwervci6k"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_otaj8"]
 [ext_resource type="PackedScene" uid="uid://bty2rpvw2dh0h" path="res://cars/Models/Doge/doge-body.glb" id="2_2l440"]
