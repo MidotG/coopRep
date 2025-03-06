@@ -25,31 +25,31 @@ func _input(event):
 		rotation.y -= event.relative.x * mouse_sensitivity
 
 func _physics_process(delta):
-	# Add the gravity.
+	#print(attack_interv.time_left);
+	if true:
+		animation_player.play("1H_Melee_Attack_Chop");
+		pass;
+	if attack_interv.time_left > 0:
+		pass;
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 		#animation_player.play("Jump_Start");
-	#if attack_interv.time_left != 0:
-		#animation_player.play("1H_Melee_Attack_Slice_Diagonal");
 
-	# Handle jump.
+	#///TODO: сделать отключение других анимаций и их появление во время этой. 
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		#animation_player.play("Jump_Start");
 		velocity.y = JUMP_VELOCITY
-		#///TODO: сделать отключение других анимаций и их появление во время этой. 
 		#animation_player.queue("Jump_Land")
 	if Input.is_action_just_pressed("esc"):
 		get_tree().quit();
-	#if Input.is_action_just_pressed("attack"):
-		#///TODO: тоже самое. В общем сделать очередь, пока не закончится анимация, то нельзя другим начинать.
+	#///TODO: тоже самое. В общем сделать очередь, пока не закончится анимация, то нельзя другим начинать.
+	if Input.is_action_just_pressed("attack"):
 		#if attack_interv.time_left == 0:
-			#attack_interv.start();
-			#animation_player.play("1H_Melee_Attack_Slice_Diagonal");
-		
+		attack_interv.start();
+		animation_player.play("1H_Melee_Attack_Slice_Diagonal");
+		pass;
 		
 	
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -62,5 +62,8 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 		if is_on_floor():
 			animation_player.play("Idle");
-
 	move_and_slide()
+
+
+func _on_attack_interv_timeout():
+	animation_player.stop();
