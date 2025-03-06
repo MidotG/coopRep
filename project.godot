@@ -19,10 +19,6 @@ config/icon="res://icon.svg"
 
 project/assembly_name="Coop#1"
 
-[filesystem]
-
-import/fbx/enabled=false
-
 [importer_defaults]
 
 wavefront_obj={

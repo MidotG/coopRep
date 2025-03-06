@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://phu53xs1euqc"]
+[gd_scene load_steps=9 format=3 uid="uid://phu53xs1euqc"]
 
-[ext_resource type="PackedScene" uid="uid://q00eq7rok4c8" path="res://watcher.tscn" id="1_pebtf"]
+[ext_resource type="PackedScene" uid="uid://q00eq7rok4c8" path="res://walker.tscn" id="1_pebtf"]
+[ext_resource type="ArrayMesh" uid="uid://i4poju64k37m" path="res://Assets/objects/Bush_Common.obj" id="2_lg26s"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_d3jb3"]
 ground_color = Color(0.212341, 0.220067, 0.195013, 1)
@@ -18,6 +19,9 @@ albedo_color = Color(0.337892, 0.57443, 0.295246, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_l80v2"]
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ob7yu"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
 [node name="World2" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -27,10 +31,19 @@ light_energy = 1.325
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ngwjv")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(10000, 0, 0, 0, 10, 0, 0, 0, 10000, 0, 0, 0)
 material_override = SubResource("ORMMaterial3D_wv1aq")
 mesh = SubResource("PlaneMesh_l80v2")
 
-[node name="watcher" parent="." instance=ExtResource("1_pebtf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0265, 0)
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ob7yu")
+
+[node name="BushCommon" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -5)
+mesh = ExtResource("2_lg26s")
+
+[node name="Walker" parent="." instance=ExtResource("1_pebtf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49376, 1.37916, -1.56369)
