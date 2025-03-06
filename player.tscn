@@ -7,8 +7,11 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_r88yf"]
 size = Vector3(3, 2, 5)
 
-[node name="player" type="VehicleBody3D"]
+[node name="machinka" type="VehicleBody3D" node_paths=PackedStringArray("front_left_wheel", "front_right_wheel")]
+mass = 100.0
 script = ExtResource("1_otaj8")
+front_left_wheel = NodePath("front_left_wheel")
+front_right_wheel = NodePath("front_right_wheel")
 
 [node name="pivot" type="Node3D" parent="."]
 
@@ -19,27 +22,24 @@ transform = Transform3D(0.94, 0, 0, 0, 0.94, 0, 0, 0, 0.94, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_r88yf")
 
 [node name="front_left_wheel" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 0.305, 1.555)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.88, 0.34, 1.48)
 use_as_steering = true
-damping_compression = 1.9
-damping_relaxation = 2.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="front_left_wheel"]
 
 [node name="Wheel" parent="front_left_wheel/MeshInstance3D" instance=ExtResource("3_5mi6t")]
 
 [node name="front_right_wheel" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05, 0.305, 1.555)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.03, 0.305, 1.555)
 use_as_steering = true
-damping_compression = 1.9
-damping_relaxation = 2.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="front_right_wheel"]
 
 [node name="Wheel" parent="front_right_wheel/MeshInstance3D" instance=ExtResource("3_5mi6t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.02, -0.0549999)
 
 [node name="back_right_wheel" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05, 0.305, -1.32)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.955, 0.35, -1.265)
 use_as_traction = true
 damping_compression = 1.9
 damping_relaxation = 2.0
@@ -49,7 +49,7 @@ damping_relaxation = 2.0
 [node name="Wheel" parent="back_right_wheel/MeshInstance3D" instance=ExtResource("3_5mi6t")]
 
 [node name="back_left_wheel" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 0.305, -1.32)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.915, 0.325, -1.23)
 use_as_traction = true
 damping_compression = 1.9
 damping_relaxation = 2.0
@@ -57,3 +57,7 @@ damping_relaxation = 2.0
 [node name="MeshInstance3D" type="MeshInstance3D" parent="back_left_wheel"]
 
 [node name="Wheel" parent="back_left_wheel/MeshInstance3D" instance=ExtResource("3_5mi6t")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, 0, 0, 0.965926, 0.258819, 0, 0.258819, -0.965926, 2, 2, -4)
+fov = 72.2896

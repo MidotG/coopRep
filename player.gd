@@ -12,6 +12,16 @@ var braking_force: float = 10.0
 @export var front_right_wheel: VehicleWheel3D
 
 func _physics_process(delta: float) -> void:
+	# Отладочный вывод для проверки действий
+	if Input.is_action_pressed("accelerate"):
+		print("Accelerate pressed")  # Движение вперед
+	if Input.is_action_pressed("brake"):
+		print("Brake pressed")       # Торможение или движение назад
+	if Input.is_action_pressed("steer_left"):
+		print("Steer left pressed")  # Поворот влево
+	if Input.is_action_pressed("steer_right"):
+		print("Steer right pressed") # Поворот вправо
+
 	# Управление движением вперед/назад
 	if Input.is_action_pressed("accelerate"):
 		# Ускоряемся вперед
@@ -36,6 +46,8 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_pressed("steer_right"):
 		steering = -max_steering_angle
 
-	# Применяем поворот к передним колесам
-	front_left_wheel.steering = deg_to_rad(steering)
-	front_right_wheel.steering = deg_to_rad(steering)
+	# Применяем поворот к передним колесам (если они назначены)
+	if front_left_wheel:
+		front_left_wheel.steering = deg_to_rad(steering)
+	if front_right_wheel:
+		front_right_wheel.steering = deg_to_rad(steering)
