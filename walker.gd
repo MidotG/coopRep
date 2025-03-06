@@ -2,11 +2,12 @@ extends CharacterBody3D
 
 @export var mouse_sensitivity: float = 0.006;
 @onready var spring_arm: SpringArm3D = $SpringArm3D;
-@onready var animation_player = $AnimationPlayer
+@onready var animation_player = $AnimationPlayer;
+@onready var attack_interv = $Weapon/attackInterv;
 
 
 const SPEED = 5.0
-const JUMP_VELOCITY = 3
+const JUMP_VELOCITY = 5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -27,18 +28,24 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+		#animation_player.play("Jump_Start");
+	#if attack_interv.time_left != 0:
+		#animation_player.play("1H_Melee_Attack_Slice_Diagonal");
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		#animation_player.play("Jump_Start");
 		velocity.y = JUMP_VELOCITY
 		#///TODO: сделать отключение других анимаций и их появление во время этой. 
-		#animation_player.play("Jump_Start");
 		#animation_player.queue("Jump_Land")
 	if Input.is_action_just_pressed("esc"):
 		get_tree().quit();
-	if Input.is_action_just_pressed("attack"):
+	#if Input.is_action_just_pressed("attack"):
 		#///TODO: тоже самое. В общем сделать очередь, пока не закончится анимация, то нельзя другим начинать.
-		#animation_player.play("1H_Melee_Attack_Slice_Diagonal");
+		#if attack_interv.time_left == 0:
+			#attack_interv.start();
+			#animation_player.play("1H_Melee_Attack_Slice_Diagonal");
+		
 		
 	
 	# Get the input direction and handle the movement/deceleration.
@@ -48,10 +55,12 @@ func _physics_process(delta):
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
-		animation_player.play("Running_B");
+		if is_on_floor():
+			animation_player.play("Running_B");
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-		animation_player.play("Idle");
+		if is_on_floor():
+			animation_player.play("Idle");
 
 	move_and_slide()
